@@ -1,0 +1,5 @@
+```
+graphcool deploy
+graphcool playground
+
+```
