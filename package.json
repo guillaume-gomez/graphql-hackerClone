@@ -23,6 +23,7 @@
   "homepage": "https://github.com/guillaume-gomez/graphql-hackerClone#readme",
   "dependencies": {
     "create-react-app": "^1.4.3",
+    "get-graphql-schema": "^2.1.1",
     "graphcool": "^0.9.2"
   }
 }
