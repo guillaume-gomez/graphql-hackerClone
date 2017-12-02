@@ -1,4 +1,4 @@
-const __RELAY_API_ENDPOINT__ = " https://api.graph.cool/relay/v1/cjao3w8943hga0146fjg36yn0";
+const __RELAY_API_ENDPOINT__ = "https://api.graph.cool/relay/v1/cjao3w8943hga0146fjg36yn0";
 
  const {
   Environment,
