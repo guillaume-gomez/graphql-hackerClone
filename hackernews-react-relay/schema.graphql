@@ -1,0 +1,21 @@
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+type Query {
+  viewer: Viewer!
+
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+}
+
+# This is the famous Relay viewer object
+type Viewer {
+  id: ID!
+}
+
