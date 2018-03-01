@@ -5,28 +5,20 @@ import {
 } from 'react-relay'
 import environment from '../Environment'
 import LinkList from './LinkList'
-//import {ITEMS_PER_PAGE} from '../constants'
 
 const LinkListPageQuery = graphql`
-  query LinkListPageQuery(
-    $count: Int!,
-    $after: String
-  ) {
+  query LinkListPageQuery {
     viewer {
       ...LinkList_viewer
     }
   }
-`;
-
+`
 class LinkListPage extends Component {
 
   render() {
     return (
       <QueryRenderer
         environment={environment}
-        // variables={{
-        //   count: ITEMS_PER_PAGE,
-        // }}
         query={LinkListPageQuery}
         render={({error, props}) => {
           if (error) {
@@ -37,7 +29,7 @@ class LinkListPage extends Component {
           return <div>Loading</div>
         }}
       />
-    );
+    )
   }
 
 }
