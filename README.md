@@ -1,9 +1,5 @@
-```
-graphcool deploy
-graphcool playground
-```
 
 mutate data
 ```
-https://console.graph.cool/server/playground
+https://console.graph.cool/HackerNewsClone/playground
 ```
