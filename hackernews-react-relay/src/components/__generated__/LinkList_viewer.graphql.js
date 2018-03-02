@@ -12,9 +12,9 @@ type Link_link$ref = any;
 import type { FragmentReference } from 'relay-runtime';
 declare export opaque type LinkList_viewer$ref: FragmentReference;
 export type LinkList_viewer = {|
-  +allLinks: {|
+  +allLinks: ?{|
     +edges: ?$ReadOnlyArray<?{|
-      +node: {|
+      +node: ?{|
         +$fragmentRefs: Link_link$ref,
       |},
     |}>,
