@@ -29,7 +29,7 @@ class LinkListPage extends Component {
           return <div>Loading</div>
         }}
       />
-    )
+    );
   }
 
 }
