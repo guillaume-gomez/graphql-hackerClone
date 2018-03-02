@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Link from './Link';
+import NewVoteSubscription from '../subscriptions/NewVoteSubscription';
 
 import {
   createFragmentContainer,
@@ -7,6 +8,10 @@ import {
 } from 'react-relay';
 
 class LinkList extends Component {
+
+  componentDidMount() {
+    NewVoteSubscription();
+  }
 
   render() {
     return (

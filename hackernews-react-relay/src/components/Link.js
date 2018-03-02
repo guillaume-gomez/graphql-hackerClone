@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GC_USER_ID } from '../Constants';
 import { timeDifferenceForDate } from '../utils';
 import CreateVoteMutation from '../mutations/CreateVoteMutation';
+import { fetchQuery } from '../Environment';
 import {
   createFragmentContainer,
   graphql
@@ -60,7 +61,7 @@ class Link extends Component {
       }
     }`);
     const checkVoteQuery = { text: checkVoteQueryText };
-    const result = await this.props.relay.environment._network.fetch(checkVoteQuery, {userId, linkId});
+    const result = await fetchQuery(checkVoteQuery, {userId, linkId});
     return result.data.viewer.allVotes.edges.length === 0;
   }
 
