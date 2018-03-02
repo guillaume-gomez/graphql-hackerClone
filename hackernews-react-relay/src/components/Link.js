@@ -35,12 +35,12 @@ class Link extends Component {
 
     const linkId = this.props.link.id;
 
-    //const canUserVoteOnLink = await this._userCanVoteOnLink(userId, linkId);
-    //if (canUserVoteOnLink) {
+    const canUserVoteOnLink = await this._userCanVoteOnLink(userId, linkId);
+    if (canUserVoteOnLink) {
       CreateVoteMutation(userId, linkId);
-    //} else {
-    //  console.log(`Current user already voted for that link`);
-    //}
+    } else {
+     console.log(`Current user already voted for that link`);
+    }
   }
 
   _userCanVoteOnLink = async (userId, linkId) => {
