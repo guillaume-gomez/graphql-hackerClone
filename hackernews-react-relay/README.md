@@ -8,7 +8,7 @@ uction build so you can use them for things like documentation.
 
 Create a `.env` file with the following variables
 ```
-REACT_APP_RELAY_API_ENDPOINT=YOUR_ENTRY_POINT_RELAY
+REACT_APP_PROJECT_ID=your_project_id
 ```
 
 then install thoses librairies
