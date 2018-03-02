@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GC_USER_ID } from '../Constants';
 import { timeDifferenceForDate } from '../utils';
+import CreateVoteMutation from '../mutations/CreateVoteMutation';
 import {
   createFragmentContainer,
   graphql
@@ -25,9 +26,42 @@ class Link extends Component {
     );
   }
 
-
   _voteForLink = async () => {
-    // ... you'll implement this in chapter 6
+    const userId = localStorage.getItem(GC_USER_ID);
+    if (!userId) {
+      console.log(`Can't vote without user ID`);
+      return;
+    }
+
+    const linkId = this.props.link.id;
+
+    //const canUserVoteOnLink = await this._userCanVoteOnLink(userId, linkId);
+    //if (canUserVoteOnLink) {
+      CreateVoteMutation(userId, linkId);
+    //} else {
+    //  console.log(`Current user already voted for that link`);
+    //}
+  }
+
+  _userCanVoteOnLink = async (userId, linkId) => {
+    const checkVoteQueryText = (`
+    query CheckVoteQuery($userId: ID!, $linkId: ID!) {
+      viewer {
+        allVotes(filter: {
+          user: { id: $userId },
+          link: { id: $linkId }
+        }) {
+          edges {
+            node {
+              id
+            }
+          }
+        }
+      }
+    }`);
+    const checkVoteQuery = { text: checkVoteQueryText };
+    const result = await this.props.relay.environment._network.fetch(checkVoteQuery, {userId, linkId});
+    return result.data.viewer.allVotes.edges.length === 0;
   }
 
 }
