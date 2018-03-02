@@ -16,6 +16,7 @@ then install thoses librairies
 npm install -g graphcool
 npm install -g create-react-app
 npm install -g get-graphql-schema
+npm install -g relay-compiler
 ```
 
 
@@ -45,3 +46,6 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
+
+
+From [How to graphql](https://www.howtographql.com/react-relay/0-introduction/) tutorial
