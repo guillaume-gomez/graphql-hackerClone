@@ -11,7 +11,7 @@ const {
 const store = new Store(new RecordSource());
 
 export const fetchQuery = (operation, variables) => {
-  return fetch(`https://api.graph.cool/relay/v1/${process.env.REACT_APP_PROJECT_ID}`, {
+  return fetch(`https://api.graph.cool/relay/v1/${process.env.REACT_APP_PROJECT_ID || "cjao3w8943hga0146fjg36yn0"}`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -30,7 +30,7 @@ export const fetchQuery = (operation, variables) => {
 const setupSubscription = (config, variables, cacheConfig, observer) => {
   const query = config.text;
 
-  const subscriptionClient = new SubscriptionClient(`wss://subscriptions.graph.cool/v1/${process.env.REACT_APP_PROJECT_ID}`, {reconnect: true})
+  const subscriptionClient = new SubscriptionClient(`wss://subscriptions.graph.cool/v1/${process.env.REACT_APP_PROJECT_ID || "cjao3w8943hga0146fjg36yn0"}`, {reconnect: true})
   subscriptionClient.subscribe({query, variables}, (error, result) => {
     observer.onNext({data: result})
   })
