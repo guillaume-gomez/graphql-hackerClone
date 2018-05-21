@@ -10,13 +10,15 @@ class Login extends Component {
     login: true, // switch between Login and SignUp
     email: '',
     password: '',
-    name: ''
+    name: '',
+    error: ''
   }
 
   render() {
-
+    const errorMessage = this.state.error ? <p>{this.state.error}</p> : null;
     return (
       <div>
+        {errorMessage}
         <h4 className='mv3'>{this.state.login ? 'Login' : 'Sign Up'}</h4>
         <div className='flex flex-column'>
           {!this.state.login &&
@@ -58,14 +60,26 @@ class Login extends Component {
   }
 
   _confirm = async () => {
-    const { name, email, password } = this.state
+    const { name, email, password } = this.state;
+    if(!email || !password) {
+      this.setState({ error: "A field is missing" });
+      return;
+    }
     if (this.state.login) {
-      SigninUserMutation(email, password, (id, token) => {
+      SigninUserMutation(email, password, (id, token, errorMessage) => {
+        if(errorMessage) {
+          this.setState({error: errorMessage});
+          return;
+        }
         this._saveUserData(id, token);
         this.props.history.push(`/`);
       });
     } else {
-      CreateUserMutation(name, email, password, (id, token) => {
+      CreateUserMutation(name, email, password, (id, token, errorMessage) => {
+        if(errorMessage) {
+          this.setState({error: errorMessage});
+          return;
+        }
         this._saveUserData(id, token);
         this.props.history.push(`/`);
       });

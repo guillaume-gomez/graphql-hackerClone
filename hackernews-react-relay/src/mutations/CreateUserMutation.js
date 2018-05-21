@@ -48,10 +48,11 @@ export default (name, email, password, callback) => {
     {
       mutation,
       variables,
-      onCompleted: (response) => {
-        const id = response.createUser.user.id;
-        const token = response.signinUser.token;
-        callback(id, token);
+      onCompleted: (response, error) => {
+        const id = response ? response.createUser.user.id : null;
+        const token = response ? response.signinUser.token : null;
+        const errorMessage = error ? error[0].message : null;
+        callback(id, token, errorMessage);
       },
       onError: err => console.error(err)
     },
